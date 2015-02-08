@@ -310,15 +310,7 @@
         <id>web</id>
         <build>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
-                        <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
-                    </configuration>
-                </plugin>
+                                
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
@@ -329,6 +321,7 @@
                         <password>admin</password>
                         <mode>both</mode>
                         <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
+                        <warSourceDirectory>src\main\webappW</warSourceDirectory>
                     </configuration>
                 </plugin>
             </plugins>
@@ -338,16 +331,7 @@
         <id>rest</id>
         <build>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <webXml>src\main\webapp\WEB-INF\webRest.xml</webXml>
-                        <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
-                    </configuration>
-                </plugin>
-                <plugin>
+              <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
@@ -357,7 +341,7 @@
                         <password>admin</password>
                         <mode>both</mode>
                         <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
-                         <webXml>src\main\webapp\WEB-INF\webRest.xml</webXml>
+                         <warSourceDirectory>src\main\webappR</warSourceDirectory>
                     </configuration>
                 </plugin>
             </plugins>
