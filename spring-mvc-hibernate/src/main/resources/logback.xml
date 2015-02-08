@@ -40,8 +40,8 @@ http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/
 	 
 	  </appender>
 	 
-	  <logger name="org.hibernate.type" level="ERROR" />
-	  <logger name="org.hibernate" 		level="ERROR" />
+	  <logger name="org.hibernate.type" level="WARN" />
+	  <logger name="org.hibernate" 		level="WARN" />
 	  <logger name="com.sobngwi" 		level="WARN" />
 	  <!--logger name="jdbc.sqlonly"          level= "INFO" additivity="false"/-->
 	  <!--logger name="jdbc.connection"       level= "INFO" additivity="false"/-->

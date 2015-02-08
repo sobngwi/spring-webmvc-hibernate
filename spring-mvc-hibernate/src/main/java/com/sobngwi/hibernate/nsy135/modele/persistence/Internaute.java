@@ -43,10 +43,10 @@ public class Internaute {
 			this.prenom = p;}
 		
 		@Column(name="ANNEE_NAISSANCE")
-		private String AnneeDeNaissance ;
-		public String getAnneeDeNaissance() {
+		private int AnneeDeNaissance ;
+		public int getAnneeDeNaissance() {
 			return AnneeDeNaissance;}
-		public void setAnneeDeNaissance(String a) {
+		public void setAnneeDeNaissance(int a) {
 			AnneeDeNaissance = a;}
 		
 		@Column(name="REGION")

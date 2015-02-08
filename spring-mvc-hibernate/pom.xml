@@ -288,6 +288,7 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>${maven-site-plugin.version}</version>
 				<configuration>
+				<contextFile>${project.build.directory}/${project.build.finalName}/${project.build.directory}/${project.build.finalName}/META-INF/context.xml/context.xml</contextFile>
 					<reports>
 						<report>summary</report>
 						<report>dependencies</report>
@@ -302,5 +303,66 @@
 			</plugin>
 		</plugins>
 	</build>
+<!--  Profile Configuration  -->
+
+ <profiles>
+    <profile>
+        <id>local</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.4</version>
+                    <configuration>
+                        <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                        <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <url>http://localhost:8080/manager/text</url>
+                        <username>admin</username>
+                        <password>admin</password>
+                        <mode>both</mode>
+                        <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+    <profile>
+        <id>dve</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.4</version>
+                    <configuration>
+                        <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <url>http://devserver.mycompany.com:8083/manager/text</url>
+                        <username>myusername</username>
+                        <password>mypassword</password>
+                        <mode>both</mode>
+                        <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+                        <contextFile>${project.build.directory}/${project.build.finalName}/META-INF/dve/context.xml</contextFile>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+</profiles>
+
 </project>
  
