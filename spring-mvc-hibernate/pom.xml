@@ -307,7 +307,7 @@
 
  <profiles>
     <profile>
-        <id>local</id>
+        <id>web</id>
         <build>
             <plugins>
                 <plugin>
@@ -335,7 +335,7 @@
         </build>
     </profile>
     <profile>
-        <id>dve</id>
+        <id>rest</id>
         <build>
             <plugins>
                 <plugin>
@@ -343,7 +343,8 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.4</version>
                     <configuration>
-                        <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                        <webXml>src\main\webapp\WEB-INF\webRest.xml</webXml>
+                        <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -351,17 +352,18 @@
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
                     <configuration>
-                        <url>http://devserver.mycompany.com:8083/manager/text</url>
-                        <username>myusername</username>
-                        <password>mypassword</password>
+                        <url>http://localhost:8080/manager/text</url>
+                        <username>admin</username>
+                        <password>admin</password>
                         <mode>both</mode>
-                        <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
-                        <contextFile>${project.build.directory}/${project.build.finalName}/META-INF/dve/context.xml</contextFile>
+                        <contextFile>src\main\webapp\WEB-INF\context.xml</contextFile>
+                         <webXml>src\main\webapp\WEB-INF\webRest.xml</webXml>
                     </configuration>
                 </plugin>
             </plugins>
         </build>
     </profile>
+    
 </profiles>
 
 </project>
