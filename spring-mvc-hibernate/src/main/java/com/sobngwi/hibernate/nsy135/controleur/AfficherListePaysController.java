@@ -1,4 +1,4 @@
-package com.sobngwi.nsy135.hibernate.controler;
+package com.sobngwi.hibernate.nsy135.controleur;
 
 import java.util.List;
 

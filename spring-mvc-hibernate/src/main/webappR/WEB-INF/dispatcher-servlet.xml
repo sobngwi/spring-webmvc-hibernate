@@ -11,8 +11,8 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<mvc:annotation-driven />
-	<!--  ACtive la configuration par annotation. -->
-	<context:component-scan base-package="com.sobngwi.nsy135.hibernate.controler" />
+	<!--  Active la configuration par annotation. -->
+	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.controleur" />
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.modele" />
     <!--  Reload Message ressource Bundle pour l internationalisation -->
     <bean id="messageSource"
