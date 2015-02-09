@@ -60,9 +60,9 @@ public class ServiceHibernate implements  IServiceHibernate {
 
 
 	@Transactional
-	public void persistPays(Pays p) {
+	public void creertPays(final String code , final String nom , final String langue ) {
 				
-		dao.persistPays(p);
+		dao.creertPays(code ,nom , langue );
 	}
 	
 	

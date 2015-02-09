@@ -97,17 +97,14 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return lTypedQuery.getResultList();
 	}
 
-	public void persistPays(Pays p) {
-
-		LOGGER.info("Begin Transaction of commit Country");
-		try {
-			entityManager.persist(p);
-		} catch (RuntimeException e) {
-			LOGGER.error(" Transaction have been Roll Back !!! see error ");
-			throw e;
-		}
-
-		LOGGER.info("End  Transaction of commit Country");
+	public void creertPays(final String code , final String nom , final String langue ) {
+		
+		     final Pays pays = new Pays() ;
+		     pays.setCode(code);
+		     pays.setNom(nom);
+		     pays.setLangue(langue);
+			entityManager.persist(pays);
+			LOGGER.info("End  Transaction of commit Country");
 	}
 
 	public Film persistFilmFromScratch() {

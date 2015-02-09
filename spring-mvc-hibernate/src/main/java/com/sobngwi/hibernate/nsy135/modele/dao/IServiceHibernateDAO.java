@@ -12,6 +12,7 @@ import com.sobngwi.hibernate.nsy135.modele.persistence.Internaute;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Pays;
 
 
+
 /**
  * Cette interface devra etre implemente, pour les requetes via JDBC.
  * Class qui va permettre une simulation des requetes Hibernate.
@@ -30,6 +31,6 @@ public interface IServiceHibernateDAO {
 	List<Film> listeDesFilmsViaHBNHQL () ;
 	List<Internaute> listeDesInternautesViaCRI () ;
 	Film persistFilmFromScratch() ;
-	void persistPays( Pays p );
+	void creertPays( final String code , final String nom , final String langue );
 
 }

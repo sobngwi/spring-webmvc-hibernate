@@ -29,6 +29,7 @@ public interface IServiceHibernate {
 	List<Film> listeDesFilmsViaHBNHQL () ;
 	List<Internaute> listeDesInternautesViaCRI () ;
 	Film persistFilmFromScratch() ;
-	void persistPays( Pays p );
+	void creertPays( final String code , final String nom , final String langue  );
+	
 
 }

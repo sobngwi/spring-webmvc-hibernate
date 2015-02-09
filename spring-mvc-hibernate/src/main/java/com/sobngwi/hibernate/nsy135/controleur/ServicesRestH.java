@@ -47,14 +47,12 @@ public class ServicesRestH {
 			) {
 
 		LOGGER.info(" Create the Country To Persist [" + code + "-->" + nom +"-->" + langue + "]") ;
-		Pays paysToPersist = new Pays () ; 
-		paysToPersist.setCode(code);
-		paysToPersist.setLangue(langue);
-		paysToPersist.setNom(nom);
-		serviceHbn.persistPays(paysToPersist);
+		
+		serviceHbn.creertPays(code, nom, langue);
 
 	   LOGGER.info("End Of persist of the Country in The Web Service return  ");
-		 return paysToPersist ;
+	    Pays p = new Pays() ;p.setCode(code); p.setNom(nom);p.setLangue(langue);
+		 return p;
 	}
 	
 	
