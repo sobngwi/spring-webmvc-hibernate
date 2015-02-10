@@ -17,7 +17,7 @@ import org.springframework.stereotype.Controller;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Film;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Internaute;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Pays;
-import com.sobngwi.hibernate.nsy135.modele.service.IServiceHibernate;
+import com.sobngwi.hibernate.nsy135.service.IServiceHibernate;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;

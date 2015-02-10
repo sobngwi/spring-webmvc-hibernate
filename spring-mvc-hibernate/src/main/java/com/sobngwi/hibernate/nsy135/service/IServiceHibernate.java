@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sobngwi.hibernate.nsy135.modele.service;
+package com.sobngwi.hibernate.nsy135.service;
 
 import java.io.Serializable;
 import java.util.List;

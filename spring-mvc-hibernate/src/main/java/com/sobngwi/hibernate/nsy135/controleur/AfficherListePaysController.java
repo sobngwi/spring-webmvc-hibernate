@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sobngwi.hibernate.nsy135.modele.persistence.Pays;
-import com.sobngwi.hibernate.nsy135.modele.service.IServiceHibernate;
+import com.sobngwi.hibernate.nsy135.service.IServiceHibernate;
 
 
 @Controller
