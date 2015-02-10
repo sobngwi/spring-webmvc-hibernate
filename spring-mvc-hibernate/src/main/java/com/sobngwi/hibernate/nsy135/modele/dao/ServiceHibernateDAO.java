@@ -38,6 +38,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 	@PersistenceContext(unitName="persistence")
 	private EntityManager entityManager;
 
+	@Override
 	public List<Pays> listeDesPaysViaHBNCRI() {
 		final CriteriaBuilder lCriteriaBuilder = entityManager
 				.getCriteriaBuilder();
@@ -52,6 +53,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return lTypedQuery.getResultList();
 	}
 
+	@Override
 	public List<Pays> listeDesPaysViaHBNHQL() {
 		StringBuilder sql = new StringBuilder();
 		sql.append("from Pays");
@@ -60,6 +62,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 
 	}
 
+	@Override
 	public List<Film> listeDesFilmsViaHBNCRI() {
 
 		final CriteriaBuilder lCriteriaBuilder = entityManager
@@ -74,6 +77,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return lTypedQuery.getResultList();
 	}
 
+	@Override
 	public List<Film> listeDesFilmsViaHBNHQL() {
 
 		StringBuilder sql = new StringBuilder();
@@ -85,6 +89,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		
 	}
 
+	@Override
 	public List<Internaute> listeDesInternautesViaCRI() {
 		final CriteriaBuilder lCriteriaBuilder = entityManager
 				.getCriteriaBuilder();
@@ -97,6 +102,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return lTypedQuery.getResultList();
 	}
 
+	@Override
 	public void creertPays(final String code , final String nom , final String langue ) {
 		
 		     final Pays pays = new Pays() ;
@@ -107,6 +113,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 			LOGGER.info("End  Transaction of commit Country");
 	}
 
+	@Override
 	public Film persistFilmFromScratch() {
 
 		Film gravity;
@@ -140,11 +147,13 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return gravity;
 	}
 
+	@Override
 	public Film LireFilmParCle(Serializable o) {
 		return entityManager.find(Film.class, o);
 
 	}
 
+	@Override
 	public List<Film> LireFilmParTitre(String titre) {
 
 		Query query = entityManager
@@ -154,6 +163,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 
 	}
 
+	@Override
 	public List<Film> lireFilmParTitreFetch(String titre) {
 
 		StringBuilder sql = new StringBuilder();
@@ -164,6 +174,7 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return query.getResultList();
 	}
 
+	@Override
 	public Set<Film> listeDesFilmsRealisesParActeurDuFilmId(Serializable o) {
 		Film film = entityManager.find(Film.class, o);
 		return film.getRealisateur().getFilmsRealises(); // Par navigation.

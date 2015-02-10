@@ -31,16 +31,21 @@ public class ServiceHibernate implements  IServiceHibernate {
 	@Inject
 	private IServiceHibernateDAO dao;
 
+	@Override
 	@Transactional(readOnly=true)
 	public List<Pays> listeDesPaysViaHBNCRI() {
 				
 		return dao.listeDesPaysViaHBNCRI() ;
 	}
+	
+	@Override
 	@Transactional(readOnly=true)
 	public List<Pays> listeDesPaysViaHBNHQL() {
 		
 		return dao.listeDesPaysViaHBNHQL();
 	}
+	
+	@Override
 	@Transactional(readOnly=true)
 	public List<Film> listeDesFilmsViaHBNCRI() {
 		
@@ -53,39 +58,47 @@ public class ServiceHibernate implements  IServiceHibernate {
 		return  dao.listeDesFilmsViaHBNHQL() ;
 	}
 	
+	@Override
 	@Transactional(readOnly=true)
 	public List<Internaute> listeDesInternautesViaCRI() {
 		return dao.listeDesInternautesViaCRI() ;
 	}
 
-
+	@Override
 	@Transactional
 	public void creertPays(final String code , final String nom , final String langue ) {
 				
 		dao.creertPays(code ,nom , langue );
 	}
 	
-	
+	@Override
 	@Transactional
 	public Film persistFilmFromScratch() {
 		
 		return	dao.persistFilmFromScratch() ;
 		
 	}
+	
+	@Override
 	@Transactional(readOnly=true)
 	public Film lireFilmParCle(Serializable o) {
 		return null ;
 		
 	}
 
+	@Override
 	@Transactional(readOnly=true)
 	public List<Film> lireFilmParTitre(String titre) {
 		return dao.LireFilmParTitre(titre) ;
 	}
+	
+	@Override
 	@Transactional(readOnly=true)
 	public List<Film> lireFilmParTitreFetch(String titre) {
 		return dao.lireFilmParTitreFetch(titre) ;
 	}
+	
+	@Override
 	@Transactional(readOnly=true)
 	public Set<Film> listeDesFilmsRealisesParActeurDuFilmId(Serializable o) {
 		return dao.listeDesFilmsRealisesParActeurDuFilmId(o);
