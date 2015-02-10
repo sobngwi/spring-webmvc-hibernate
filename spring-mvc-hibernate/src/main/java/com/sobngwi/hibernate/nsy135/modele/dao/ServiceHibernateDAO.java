@@ -5,6 +5,7 @@ package com.sobngwi.hibernate.nsy135.modele.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -38,6 +39,15 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 	@PersistenceContext(unitName="persistence")
 	private EntityManager entityManager;
 
+	
+	
+	public ServiceHibernateDAO() {
+		
+	}
+	public ServiceHibernateDAO(EntityManager entityManager) {
+			this.entityManager = entityManager;
+	}
+
 	@Override
 	public List<Pays> listeDesPaysViaHBNCRI() {
 		final CriteriaBuilder lCriteriaBuilder = entityManager
@@ -61,7 +71,13 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return query.getResultList();
 
 	}
-
+	
+	@Override
+	public List<Pays> findAllCountries() throws Exception {
+		TypedQuery<Pays> query = entityManager.createQuery("select * from Pays", Pays.class);
+		return query.getResultList();	
+	}
+	
 	@Override
 	public List<Film> listeDesFilmsViaHBNCRI() {
 
@@ -180,6 +196,16 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		return film.getRealisateur().getFilmsRealises(); // Par navigation.
 	}
 
+	@Override
+	public Optional<Pays> findPaysById(String code) throws Exception {
+		Pays pays = entityManager.find(Pays.class, code);
+		return Optional.ofNullable(pays);
+	}
+	
+	@Override
+	public Pays updatePays(Pays pays) throws Exception {
+		return entityManager.merge(pays);
+	}
 
 
 }

@@ -5,6 +5,7 @@ package com.sobngwi.hibernate.nsy135.modele.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import com.sobngwi.hibernate.nsy135.modele.persistence.Film;
@@ -32,5 +33,8 @@ public interface IServiceHibernateDAO {
 	List<Internaute> listeDesInternautesViaCRI () ;
 	Film persistFilmFromScratch() ;
 	void creertPays( final String code , final String nom , final String langue );
+	Optional<Pays> findPaysById(String code) throws Exception ;
+	Pays updatePays(Pays pays) throws Exception;
+	List<Pays> findAllCountries() throws Exception;
 
 }
