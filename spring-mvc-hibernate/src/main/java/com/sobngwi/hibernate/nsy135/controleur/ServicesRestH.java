@@ -1,5 +1,6 @@
 package com.sobngwi.hibernate.nsy135.controleur;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -28,7 +29,6 @@ import com.wordnik.swagger.annotations.ApiParam;
 @Controller
 public class ServicesRestH {
 
-	
 	@Inject
 	private IServiceHibernate serviceHbn;
 	
@@ -74,6 +74,25 @@ public class ServicesRestH {
 		
 	}
 	
+	@POST
+	@Path("/updateCountry/{code}/{nom}/{langue}")
+	@ApiOperation(value = "Service de Modification  de Pays a partir du code", 
+	notes = "Un service de Modification de Pays a partir du code , la langue et son nom  ", 
+	httpMethod = "POST", response = Pays.class)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Pays  updateCountry(
+			@ApiParam(defaultValue = "FR" , access="hidden") @PathParam("code") String code,	
+			@ApiParam(defaultValue = "FRANCE") @PathParam("nom") String nom,
+			@ApiParam(defaultValue = "FRANCAIS") @PathParam("langue") String langue
+			) {
+       
+		LOGGER.info(" Country To update [" + code + "-->" + nom +"-->" + langue + "]") ;
+		Pays p = new Pays() ;p.setCode(code); p.setNom(nom);p.setLangue(langue);
+		serviceHbn.modifierPays(Arrays.asList(p));
+
+	    LOGGER.info("End Of persist of the Country in The Web Service return  ");
+		 return p;
+	}
 	
 	@GET
 	@Path("/listeDesPaysCRI")
@@ -148,6 +167,5 @@ public class ServicesRestH {
 		LOGGER.info("End Of persist of the Country in The Web Service return  ");
 		return film ;
 	}
-	
 	
 }

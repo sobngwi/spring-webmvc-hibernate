@@ -14,6 +14,9 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
 import org.slf4j.Logger;
@@ -211,5 +214,26 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 	        final Pays lPays = entityManager.getReference(Pays.class, pPays.getCode());
 	        entityManager.remove(lPays);
 	    }
+	
+	@Override
+    public void modifierPays(final Pays pPays) {
+        final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaUpdate<Pays> lCriteriaUpdate = lCriteriaBuilder.createCriteriaUpdate(Pays.class);
+        final Root<Pays> lRoot = lCriteriaUpdate.from(Pays.class);
+        final Path<Pays> lPath = lRoot.get("code");
+        final Expression<Boolean> lExpression = lCriteriaBuilder.equal(lPath, pPays.getCode());
+        lCriteriaUpdate.where(lExpression);
+        lCriteriaUpdate.set("nom", pPays.getNom());
+        final Query lQuery = entityManager.createQuery(lCriteriaUpdate);
+        final int lRowCount = lQuery.executeUpdate();
+
+        if (lRowCount != 1) {
+            final org.hibernate.Query lHQuery = lQuery.unwrap(org.hibernate.Query.class);
+            final String lSql = lHQuery.getQueryString();
+            throw new RuntimeException("Nombre d'occurences (" + lRowCount + 
+                    ") modifiés différent de 1 pour " + lSql);
+        }
+    }
 
 }

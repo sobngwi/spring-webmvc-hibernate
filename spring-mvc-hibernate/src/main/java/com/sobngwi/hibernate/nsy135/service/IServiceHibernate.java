@@ -31,6 +31,8 @@ public interface IServiceHibernate {
 	Film persistFilmFromScratch() ;
 	void creertPays( final String code , final String nom , final String langue  );
 	void supprimerPays(final String pcodePays) throws Exception;
+	void modifierPays(List<Pays> pListePays);
+	
 	
 
 }

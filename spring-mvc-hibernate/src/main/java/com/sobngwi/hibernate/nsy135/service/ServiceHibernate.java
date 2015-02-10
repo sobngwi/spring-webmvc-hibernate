@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sobngwi.hibernate.nsy135.modele.dao.IServiceHibernateDAO;
@@ -113,5 +112,11 @@ public class ServiceHibernate implements  IServiceHibernate {
 
 	        dao.supprimerPays(lPays);
 	    }
-	
+	@Override   
+	@Transactional
+	    public void modifierPays(final List<Pays> pListePays) {
+	        for (final Pays lPays : pListePays) {
+	            dao.modifierPays(lPays);
+	        }
+	    }
 }
