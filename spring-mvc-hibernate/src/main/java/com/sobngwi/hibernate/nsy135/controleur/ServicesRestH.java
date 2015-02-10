@@ -55,6 +55,25 @@ public class ServicesRestH {
 		 return p;
 	}
 	
+	@POST
+	@Path("/deleteCountry/{code}")
+	@ApiOperation(value = "Service de Suppression de Pays a partir du code", 
+	notes = "Un service de creation de Pays a partir du code , la langue et son nom  ", 
+	httpMethod = "POST", response = Void.class)
+	@Produces(MediaType.APPLICATION_JSON)
+	public void  deleteCountry(
+			@ApiParam(defaultValue = "FR") @PathParam("code") String code	
+			) throws Exception {
+
+		LOGGER.info(" Country the Country To Delete [" + code +  "]") ;
+		
+		serviceHbn.supprimerPays(code);
+
+	   LOGGER.info("End Of Delete of the Country in The Web Service return  ");
+	    
+		
+	}
+	
 	
 	@GET
 	@Path("/listeDesPaysCRI")

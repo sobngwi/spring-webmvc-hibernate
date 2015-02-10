@@ -36,5 +36,6 @@ public interface IServiceHibernateDAO {
 	Optional<Pays> findPaysById(String code) throws Exception ;
 	Pays updatePays(Pays pays) throws Exception;
 	List<Pays> findAllCountries() throws Exception;
+	void supprimerPays(final Pays pays) throws Exception;;
 
 }

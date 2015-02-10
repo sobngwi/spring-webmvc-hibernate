@@ -30,6 +30,7 @@ public interface IServiceHibernate {
 	List<Internaute> listeDesInternautesViaCRI () ;
 	Film persistFilmFromScratch() ;
 	void creertPays( final String code , final String nom , final String langue  );
+	void supprimerPays(final String pcodePays) throws Exception;
 	
 
 }

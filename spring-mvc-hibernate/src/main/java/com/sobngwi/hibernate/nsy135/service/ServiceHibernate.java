@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.sobngwi.hibernate.nsy135.modele.dao.IServiceHibernateDAO;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Film;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Internaute;
@@ -104,6 +105,13 @@ public class ServiceHibernate implements  IServiceHibernate {
 		return dao.listeDesFilmsRealisesParActeurDuFilmId(o);
 	}
 	
-	
+	@Override  
+	@Transactional
+	    public void supprimerPays(final String pcodePays) throws Exception {
+	        final Pays lPays = new Pays();
+	        lPays.setCode(pcodePays);
 
+	        dao.supprimerPays(lPays);
+	    }
+	
 }

@@ -206,6 +206,10 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 	public Pays updatePays(Pays pays) throws Exception {
 		return entityManager.merge(pays);
 	}
-
+	@Override
+	 public void supprimerPays(final Pays pPays) {
+	        final Pays lPays = entityManager.getReference(Pays.class, pPays.getCode());
+	        entityManager.remove(lPays);
+	    }
 
 }
