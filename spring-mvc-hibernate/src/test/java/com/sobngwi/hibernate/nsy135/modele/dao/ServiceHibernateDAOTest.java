@@ -1,8 +1,16 @@
 package com.sobngwi.hibernate.nsy135.modele.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,19 +24,21 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-
-
-
-import com.sobngwi.hibernate.nsy135.modele.dao.ServiceHibernateDAO;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Pays;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceHibernateDAOTest {
 	
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(ServiceHibernateDAOTest.class);
 
 	private Pays france, cameroun, senegal;
 	private Answer<Pays> withCountryById = new Answer<Pays>() {
@@ -45,22 +55,28 @@ public class ServiceHibernateDAOTest {
 		}
 	};
 	
+
 	@Mock
 	private ServiceHibernateDAO dao;
+	
 	@Mock
 	@PersistenceContext(unitName="persistence")
 	private EntityManager mockEntityManager;
+	
 	@Mock
 	private TypedQuery<Pays> mockQuery;
 
 	@Before
 	public void setUp() throws Exception {
 		dao = new ServiceHibernateDAO(mockEntityManager);
+		//MockitoAnnotations.initMocks(this);
 		setupCountries();
 	}
 
 	private void setupCountries() {
-		france = new Pays() ; france.setCode("FR"); 
+		
+		france = new Pays() ; 
+		france.setCode("FR"); 
 		france.setNom("FRANCE");
 		france.setLangue("FRANCAIS");
 		
@@ -75,20 +91,22 @@ public class ServiceHibernateDAOTest {
 		senegal.setLangue("WOLOFF");		
 	}
 
+	
 	@Test
 	public void finding_existing_country_should_return_country() throws Exception {
 		// Given
-		
-		
+		LOGGER.info(" finding dao ===" + dao);
+		LOGGER.info(" finding mockQuery ===" + mockQuery);
 		when(mockEntityManager.find(Pays.class, france.getCode())).thenReturn(france);
-		
-		// When
 		Optional<Pays> actualCountry = dao.findPaysById(france.getCode());
+	
 		// Then
-		assertTrue(actualCountry.isPresent());
+		assertTrue(actualCountry.isPresent() );
 		assertEquals(france.getCode(), actualCountry.get().getCode());
 		assertEquals(france.getNom(), actualCountry.get().getNom());
 		assertEquals(france.getLangue(), actualCountry.get().getLangue());
+		verify(mockEntityManager, times(1)).find(Pays.class, france.getCode()) ;
+		
 	}
 	
 	@Test

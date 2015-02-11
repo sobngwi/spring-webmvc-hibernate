@@ -12,10 +12,10 @@
 
 	<mvc:annotation-driven /> <!--  Validation de formulaire -->
 	<!--  Active la configuration par annotation. -->
-	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.controleur" />
+	<context:component-scan base-package="com.sobngwi.hibernate.nsy135." />
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.service" />
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.modele" />
-	
+
     <!--  Reload Message ressource Bundle pour l internationalisation -->
     <bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

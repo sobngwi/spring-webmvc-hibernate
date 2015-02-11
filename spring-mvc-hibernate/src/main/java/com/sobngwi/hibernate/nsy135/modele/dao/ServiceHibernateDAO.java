@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -203,6 +204,11 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 	public Optional<Pays> findPaysById(String code) throws Exception {
 		Pays pays = entityManager.find(Pays.class, code);
 		return Optional.ofNullable(pays);
+	}
+	@Override
+	public Pays findPaysByCode(String code) throws Exception {
+		return entityManager.find(Pays.class, code);
+		 
 	}
 	
 	@Override

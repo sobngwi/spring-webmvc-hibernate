@@ -1,6 +1,7 @@
 package  com.sobngwi.hibernate.nsy135.converters ;
      
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.sobngwi.hibernate.nsy135.modele.persistence.Pays;
