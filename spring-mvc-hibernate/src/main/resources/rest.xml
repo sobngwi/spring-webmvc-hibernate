@@ -20,8 +20,15 @@
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.controleur" />
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.modele" />
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.service" />
+	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.service" />
 	
-
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+	<property name="converters">
+        <set>
+            <bean class="com.sobngwi.hibernate.nsy135.converters.PaysToOrigine"/>
+        </set>
+    </property>
+    </bean>
     <!-- 
 	<util:properties id="mysqlClusterJProperties" location="classpath:clusterj.properties" />
 	 

@@ -1,5 +1,6 @@
 package com.sobngwi.hibernate.nsy135.controleur;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,8 +14,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 
+import com.sobngwi.hibernate.nsy135.converters.Origine;
+import com.sobngwi.hibernate.nsy135.converters.PaysToOrigine;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Film;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Internaute;
 import com.sobngwi.hibernate.nsy135.modele.persistence.Pays;
@@ -32,6 +36,9 @@ public class ServicesRestH {
 	@Inject
 	private IServiceHibernate serviceHbn;
 	
+	@Inject 
+	ConversionService conversionservice ;
+		
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServicesRestH.class);
 
 	@POST
@@ -112,10 +119,15 @@ public class ServicesRestH {
 	notes = "listeDesPaysHQL  :Donne la liste des films dans notre base de donnees ", 
 	httpMethod = "GET", response = List.class)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Pays> listeDesPaysViaHQL() {
+	public List<Origine> listeDesPaysViaHQL() {
 
 		LOGGER.info("Starting Liste Des Films Services Avec Criteria");
-		return serviceHbn.listeDesPaysViaHBNHQL();
+		List<Pays> lesPays = serviceHbn.listeDesPaysViaHBNHQL();
+		List<Origine> lesOrigines =new ArrayList<Origine>() ;
+		for (Pays pays : lesPays) {
+			lesOrigines.add(conversionservice.convert(pays, Origine.class));
+		}
+		return lesOrigines ;
 	}
 
 	@GET
