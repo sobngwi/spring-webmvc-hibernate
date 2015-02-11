@@ -3,11 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <title><spring:message code="titre.suppression.pays"/></title>
-    </head>
-    <body>
+
         <table border="1">
             <thead>
                 <tr>
@@ -25,7 +21,7 @@
                         <td><c:out value="${pays.langue}"/></td>
                         <td>
                             <c:url value="/supprimerSuppressionListePays" var="url">
-                                <c:param name="codePays" value="${pays.code}"/>
+                                <c:param name="code" value="${pays.code}"/>
                             </c:url>
                             <a href="${url}">
                                 <spring:message code="suppression.supprimer.libelle" />
@@ -35,5 +31,4 @@
                 </c:forEach>
             </tbody>
         </table>
-    </body>
-</html>
+

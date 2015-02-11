@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class CreationForm {
 
-    @NotEmpty
+   // @NotEmpty
     private String code;
     @NotEmpty
     //@Pattern(regexp="\\d*")

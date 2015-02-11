@@ -30,8 +30,8 @@ public class SupprimerListeCoursesController {
     }
 
     @RequestMapping(value="/supprimerSuppressionListePays", method = RequestMethod.GET)
-    public String supprimer(@RequestParam(value="codePays") final String pcodePays, final ModelMap pModel) throws Exception {
-
+    public String supprimer(@RequestParam(value="code") final String pcodePays, final ModelMap pModel) throws Exception {
+    	
         service.supprimerPays(pcodePays);
         return afficher(pModel);
     }
