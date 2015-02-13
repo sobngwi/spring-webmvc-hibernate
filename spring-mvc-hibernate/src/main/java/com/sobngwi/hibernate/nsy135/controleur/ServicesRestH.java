@@ -2,6 +2,7 @@ package com.sobngwi.hibernate.nsy135.controleur;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.commons.lang.time.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.ConversionService;
@@ -54,10 +56,15 @@ public class ServicesRestH {
 			) {
 
 		LOGGER.info(" Create the Country To Persist [" + code + "-->" + nom +"-->" + langue + "]") ;
-		
+		StopWatch watch = new StopWatch() ;
+		watch.start();
+		//long start = (new Date()).getTime() ;
 		serviceHbn.creertPays(code, nom, langue);
+		LOGGER.info("End Of persist of the Country in The Web Service return  : Duree watch  ---> [" + watch.getTime() + "]");
+		/*long duration  =  (new Date()).getTime()  - start ;
+	    LOGGER.info("End Of persist of the Country in The Web Service return  : Duree ---> [" + duration + "]");*/
+	    
 
-	   LOGGER.info("End Of persist of the Country in The Web Service return  ");
 	    Pays p = new Pays() ;p.setCode(code); p.setNom(nom);p.setLangue(langue);
 		 return p;
 	}

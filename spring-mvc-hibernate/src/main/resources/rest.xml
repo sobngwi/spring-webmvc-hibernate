@@ -4,6 +4,7 @@
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/context
@@ -13,6 +14,7 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
     http://www.springframework.org/schema/jee 
     http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 	<context:annotation-config />
@@ -68,5 +70,25 @@
 		</property>
 	</bean>
 
+	<aop:config>
+
+  <aop:aspect id="concurrentOperationRetry" ref="concurrentOperationExecutor">
+
+    <aop:pointcut id="idempotentOperation"
+        expression="execution(* com.sobngwi.hibernate.nsy135.service.*.*(..))"/>
+       
+    <aop:around
+       pointcut-ref="idempotentOperation"
+       method="doConcurrentOperation"/>
+  
+  </aop:aspect>
+
+</aop:config>
+
+	<bean 	id="concurrentOperationExecutor"
+  			class="audit.RetryService">
+     		<property name="maxRetries" value="9" />
+     		
+	</bean>
 
 </beans>

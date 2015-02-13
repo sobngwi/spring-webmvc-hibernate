@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import javax.inject.Named;
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -129,8 +130,8 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		     pays.setCode(code);
 		     pays.setNom(nom);
 		     pays.setLangue(langue);
-			entityManager.persist(pays);
-			LOGGER.info("End  Transaction of commit Country");
+		     entityManager.persist(pays);
+			
 	}
 
 	@Override

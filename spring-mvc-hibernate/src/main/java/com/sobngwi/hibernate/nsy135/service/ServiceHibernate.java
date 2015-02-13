@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.PessimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +26,7 @@ import com.sobngwi.hibernate.nsy135.modele.persistence.Pays;
  */
 @Service
 public class ServiceHibernate implements  IServiceHibernate {
+
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServiceHibernate.class);
 	
@@ -68,8 +69,9 @@ public class ServiceHibernate implements  IServiceHibernate {
 	@Override
 	@Transactional
 	public void creertPays(final String code , final String nom , final String langue ) {
-				
+
 		dao.creertPays(code ,nom , langue );
+		
 	}
 	
 	@Override
@@ -120,4 +122,7 @@ public class ServiceHibernate implements  IServiceHibernate {
 	            dao.modifierPays(lPays);
 	        }
 	    }
+	 
+	
+	
 }

@@ -10,6 +10,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.PessimisticLockingFailureException;
+import org.springframework.util.StopWatch;
 
 /**
  * @author Alain Narcisse SOBNGWI
@@ -23,15 +25,16 @@ public class ExecutionMonitoring {
 	
 	@Around("execution(* *(..))")
 	public Object mesure(ProceedingJoinPoint pjp) throws Throwable {
-		//StopWatch sw = new StopWatch(getClass().getSimpleName()) ;
-		long start = (new Date()).getTime() ;
-		//sw.start(pjp.getSignature().getDeclaringTypeName());
+		StopWatch sw = new StopWatch(getClass().getSimpleName()) ;
+		//long start = (new Date()).getTime() ;
+		sw.start(pjp.getSignature().getDeclaringTypeName());
 		Object retVal = pjp.proceed() ;
-		long  duration  = (new Date()).getTime() - start  ;
-		LOGGER.info("[Duration] " +  pjp.getSignature().getDeclaringTypeName() +"."+ pjp.getSignature().getName() + "  took ****  [" + duration + "]  ****   ms" );
-		// sw.stop();
-		// LOGGER.info(sw.prettyPrint());
+		//long  duration  = (new Date()).getTime() - start  ;
+		sw.stop();
+		LOGGER.info("[Duration] " +  pjp.getSignature().getDeclaringTypeName() +"."+ pjp.getSignature().getName() + "  took ****  [" + sw.getTotalTimeMillis() + "]  ****   ms" );
+		//LOGGER.info(sw.prettyPrint());
 		return retVal ;
 	}
 	
+
 }
