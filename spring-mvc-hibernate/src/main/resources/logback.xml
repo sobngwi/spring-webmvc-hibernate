@@ -21,14 +21,14 @@ http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/
 
     <appender name="FILE"
 	    class="ch.qos.logback.core.rolling.RollingFileAppender">
-	    <file>/home/suse/sobngwi/eclipse/sts/sts-bundle/sts-3.6.3.RELEASE/projects/nsy135/logs/nsy135.log</file>
+	    <file>/home/suse/sobngwi/NSY135/logs/nsy135.log</file>
 	    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 	       <Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{136} - %msg%n
 	           </Pattern>
 	    </encoder>
 	
 	    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-	        <FileNamePattern>/home/suse/sobngwi/eclipse/sts/sts-bundle/sts-3.6.3.RELEASE/projects/nsy135/logs/nsy135.log.%i.zip</FileNamePattern>
+	        <FileNamePattern>/home/suse/sobngwi/NSY135/logs/nsy135.log.%i.zip</FileNamePattern>
 	        <MinIndex>1</MinIndex>
 	        <MaxIndex>30</MaxIndex>
 	    </rollingPolicy>
