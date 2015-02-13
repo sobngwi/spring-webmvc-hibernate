@@ -16,6 +16,7 @@
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 	<context:annotation-config />
+	<context:load-time-weaver  />
 	
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.controleur" />
 	<context:component-scan base-package="com.sobngwi.hibernate.nsy135.modele" />

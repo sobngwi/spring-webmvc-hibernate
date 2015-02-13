@@ -13,7 +13,6 @@ public class PaysToOrigine implements Converter<Pays,Origine>{
 	public Origine convert(Pays source) {
 		
 		if ( source.getCode().equals("CM") ) source.setCode("CAMER");
-		    System.out.println("CONVERSION ===" + source.getCode() );
 		return new Origine (source);
 	}
 
