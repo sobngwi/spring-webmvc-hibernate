@@ -7,10 +7,7 @@
         <!-- only weave classes in this package -->
         <!--  include within="com.fasterxml.jackson.*.*" />  -->
         
-        <include within="com.sobngwi.hibernate.nsy135.*"/>
-        <include within="com.sobngwi.hibernate.nsy135.*.*"/>
-        <include within="com.sobngwi.hibernate.nsy135.*.*.*"/>
-        <include within="com.sobngwi.hibernate.nsy135.controleur.ServicesRestH"/>
+        <include within="com.sobngwi.hibernate.nsy135..*"/>
         <include within="audit.ExecutionMonitoring" />
     </weaver>
     <aspects>
