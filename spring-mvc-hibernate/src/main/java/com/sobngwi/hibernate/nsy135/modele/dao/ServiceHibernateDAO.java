@@ -4,12 +4,12 @@
 package com.sobngwi.hibernate.nsy135.modele.dao;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.inject.Named;
-import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -21,6 +21,8 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Session;
+import org.hibernate.jdbc.Work;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -130,8 +132,18 @@ public class ServiceHibernateDAO implements IServiceHibernateDAO {
 		     pays.setCode(code);
 		     pays.setNom(nom);
 		     pays.setLangue(langue);
+		     Session session = entityManager.unwrap(Session.class);
+		    // Persistons le pays en Serializable 
+		     session.doWork(
+		    		    new Work() {
+		    		            @Override
+		    		            public void execute(Connection connection) throws SQLException {
+		    		                connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+		    		            }
+		    		        });
 		     entityManager.persist(pays);
-			
+		  
+		   
 	}
 
 	@Override
