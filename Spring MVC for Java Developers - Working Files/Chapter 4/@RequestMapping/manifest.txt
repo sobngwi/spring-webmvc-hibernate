@@ -1,0 +1,51 @@
+Users\Kevin Bowersox\Desktop\Development\InfiniteSkills\Courses\Spring MVC\Lessons\Chapter 4\0403 RequestMapping\@RequestMapping
+   │
+   ├[src]
+   │   │
+   │   ├[main]
+   │   │   │
+   │   │   ├[java]
+   │   │   │   │
+   │   │   │   └[com]
+   │   │   │       │
+   │   │   │       └[infiniteskills]
+   │   │   │           │
+   │   │   │           └[mvc]
+   │   │   │               │
+   │   │   │               └[controllers]
+   │   │   │                   │
+   │   │   │                   ├HomeController
+   │   │   │                   └ProjectController
+   │   │   ├[resources]
+   │   │   │   │
+   │   │   │   └log4j
+   │   │   └[webapp]
+   │   │       │
+   │   │       ├[resources]
+   │   │       │   │
+   │   │       │   ├[css]
+   │   │       │   │   │
+   │   │       │   │   ├bootstrap-select.min
+   │   │       │   │   └home
+   │   │       │   └[js]
+   │   │       │       │
+   │   │       │       └bootstrap-select.min
+   │   │       └[WEB-INF]
+   │   │           │
+   │   │           ├[spring]
+   │   │           │   │
+   │   │           │   ├applicationContext
+   │   │           │   └dispatcher-servlet
+   │   │           ├[views]
+   │   │           │   │
+   │   │           │   ├[fragments]
+   │   │           │   │   │
+   │   │           │   │   └header
+   │   │           │   ├home
+   │   │           │   └project_add
+   │   │           └web
+   │   └[test]
+   │       │
+   │       ├[java]
+   │       └[resources]
+   └pom

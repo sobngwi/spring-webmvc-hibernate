@@ -1,0 +1,19 @@
+Users\Kevin Bowersox\Desktop\Development\InfiniteSkills\Courses\Spring MVC\Lessons\Chapter 3\0302 Project Setup\Project Setup
+   │
+   ├[src]
+   │   │
+   │   ├[main]
+   │   │   │
+   │   │   ├[java]
+   │   │   ├[resources]
+   │   │   └[webapp]
+   │   │       │
+   │   │       ├[WEB-INF]
+   │   │       │   │
+   │   │       │   └web
+   │   │       └home
+   │   └[test]
+   │       │
+   │       ├[java]
+   │       └[resources]
+   └pom

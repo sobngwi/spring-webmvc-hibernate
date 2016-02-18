@@ -1,0 +1,42 @@
+Users\Kevin Bowersox\Desktop\Development\InfiniteSkills\Courses\Spring MVC\Lessons\Chapter 3\0309 View Resolver\Serving Static Resources
+   │
+   ├[src]
+   │   │
+   │   ├[main]
+   │   │   │
+   │   │   ├[java]
+   │   │   │   │
+   │   │   │   └[com]
+   │   │   │       │
+   │   │   │       └[infiniteskills]
+   │   │   │           │
+   │   │   │           └[mvc]
+   │   │   │               │
+   │   │   │               └[controllers]
+   │   │   │                   │
+   │   │   │                   └HomeController
+   │   │   ├[resources]
+   │   │   │   │
+   │   │   │   └log4j
+   │   │   └[webapp]
+   │   │       │
+   │   │       ├[resources]
+   │   │       │   │
+   │   │       │   └[css]
+   │   │       │       │
+   │   │       │       └home
+   │   │       └[WEB-INF]
+   │   │           │
+   │   │           ├[spring]
+   │   │           │   │
+   │   │           │   ├applicationContext
+   │   │           │   └dispatcher-servlet
+   │   │           ├[views]
+   │   │           │   │
+   │   │           │   └home
+   │   │           └web
+   │   └[test]
+   │       │
+   │       ├[java]
+   │       └[resources]
+   └pom

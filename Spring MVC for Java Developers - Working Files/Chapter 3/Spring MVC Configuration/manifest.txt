@@ -1,0 +1,22 @@
+Users\Kevin Bowersox\Desktop\Development\InfiniteSkills\Courses\Spring MVC\Lessons\Chapter 3\0303 Spring MVC Configuration\Spring MVC Configuration
+   │
+   ├[src]
+   │   │
+   │   ├[main]
+   │   │   │
+   │   │   ├[java]
+   │   │   ├[resources]
+   │   │   │   │
+   │   │   │   └log4j
+   │   │   └[webapp]
+   │   │       │
+   │   │       ├[WEB-INF]
+   │   │       │   │
+   │   │       │   ├dispatcher-servlet
+   │   │       │   └web
+   │   │       └home
+   │   └[test]
+   │       │
+   │       ├[java]
+   │       └[resources]
+   └pom
